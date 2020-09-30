@@ -1,8 +1,11 @@
 package sud.Models;
 
-public class Warrior extends Personage{
+import lombok.Data;
 
-    public Warrior(int hp, int mp, int force, int defense, ElementPersonage elementPersonage) {
+@Data
+public class Warrior extends Character {
+
+    public Warrior(int hp, int mp, int force, int defense, CharacterElement elementPersonage) {
         super(hp, mp, force, defense, elementPersonage);
     }
 }

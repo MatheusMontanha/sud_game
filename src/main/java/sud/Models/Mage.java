@@ -1,8 +1,11 @@
 package sud.Models;
 
-public class Mage extends Personage {
+import lombok.Data;
 
-    public Mage(int hp, int mp, int force, int defense, ElementPersonage elementPersonage) {
+@Data
+public class Mage extends Character {
+
+    public Mage(int hp, int mp, int force, int defense, CharacterElement elementPersonage) {
         super(hp, mp, force, defense, elementPersonage);
     }
 }
