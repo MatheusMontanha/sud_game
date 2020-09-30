@@ -1,4 +1,4 @@
-package sud.Models;
+package sud.models;
 
 public enum ItemType {
     POTION,

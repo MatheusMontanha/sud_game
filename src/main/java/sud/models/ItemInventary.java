@@ -1,4 +1,4 @@
-package sud.Models;
+package sud.models;
 
 import lombok.Data;
 
