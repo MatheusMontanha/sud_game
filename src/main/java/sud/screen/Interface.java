@@ -24,6 +24,24 @@ public class Interface {
         return getInstance().read();
     }
 
+    public static int readIntInput(){
+        return getInstance().readInt();
+    }
+
+    private static int readInt() {
+        Integer num = null;
+        do {
+            try {
+                val scanner = new Scanner(System.in);
+                num = scanner.nextInt();
+            } catch (Exception ex) {
+                System.out.println("Por favor, digite um numero");
+            }
+        } while (num == null);
+        return num;
+    }
+
+
     private void printText(String text, Object... varargs) {
         Interface.printText(String.format(text, varargs));
     }

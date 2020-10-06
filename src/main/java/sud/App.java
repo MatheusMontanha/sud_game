@@ -9,9 +9,7 @@ import static sud.constants.Texts.HISTOTY_INTRO;
 
 public class App {
     public static void main(String[] args) {
-        val map = Map.getInstance();
-        Interface.printTexts(HISTOTY_INTRO);
-        val engine = new Engine(map);
+        val engine = new Engine();
         engine.runGame();
     }
 }
