@@ -21,7 +21,8 @@ public abstract class Room {
     }
 
     public static Room randomRoom(int xPosition, int yPosition) {
-        return new MonsterRoom(xPosition, yPosition);
+        val randomized = Random.randomize(0, 1);
+        return randomized ==1?  new MonsterRoom(xPosition, yPosition): new ItemRoom(xPosition, yPosition);
     }
 
     public RoomState onRoomEnter(){
@@ -47,7 +48,7 @@ public abstract class Room {
             try {
                 nextRoom = goToRoom(directions.get(selectedRoom), directions);
             } catch (Exception e) {
-                e.printStackTrace();
+
                 Interface.printText("Por favor, selecione um valor entre 0 e %s", (directions.size() - 1));
             }
         } while (nextRoom == null);

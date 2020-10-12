@@ -15,17 +15,19 @@ public class Engine {
         xPosition += nextRoom.getHorizontalSteps();
         yPosition += nextRoom.getVerticalSteps();
         currentRoom = Map.getInstance().getRooms()[xPosition][yPosition];
-        Interface.printText("you're at [" + xPosition + "][" + yPosition + "]");
     }
 
-    private void processRoomResult(RoomResult roomResult) {
-
+    private boolean processRoomResult(RoomResult roomResult) {
+        return roomResult == RoomResult.GAME_OVER || roomResult == RoomResult.GAME_SUCCESS;
     }
 
     public void runGame() {
+        boolean isGameFinished = false;
         do {
             val roomState = currentRoom.onRoomEnter();
             if (roomState == RoomState.CLEAN) {
+                Interface.printText("Parece que você já esteve aqui");
+
                 executeNextRoomCommand();
             } else {
                 RoomResult roomResult;
@@ -33,10 +35,12 @@ public class Engine {
                     roomResult = currentRoom.nextAction();
 
                 } while (roomResult == RoomResult.CONTINUE_ON_ROOM);
-                processRoomResult(roomResult);
+                isGameFinished = processRoomResult(roomResult);
+                if (!isGameFinished) {
+                    executeNextRoomCommand();
+                }
             }
 
-        } while (!(currentRoom instanceof BossRoom));
-        Interface.printText("cheogu na boss room");
+        } while (!isGameFinished);
     }
 }

@@ -1,10 +1,9 @@
 package sud.utils;
 
-import java.util.concurrent.ThreadLocalRandom;
-
 public class Random {
     public static int randomize(int min, int max) {
-        return ThreadLocalRandom.current().nextInt(min, max + 1);
+        java.util.Random rand = new java.util.Random();
+        return rand.nextInt((max - min) + 1) + min;
     }
 
     public static int rollDice20() {

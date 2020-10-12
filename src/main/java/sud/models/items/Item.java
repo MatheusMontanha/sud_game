@@ -41,4 +41,19 @@ public abstract class Item {
                 return null;
         }
     }
+
+    public static Item randomMediumItem() {
+        val randomized = Random.randomize(1, 2);
+        return randomized == 1 ? new MediumLife() : new MediumMana();
+    }
+
+    public static Item randomGreatItem() {
+        val randomized = Random.randomize(1, 2);
+        return randomized == 1 ? new GreatLife() : new GreatMana();
+    }
+
+    public static Item randomSmallItem() {
+        val randomized = Random.randomize(1, 2);
+        return randomized == 1 ? new SmallLife() : new SmallMana();
+    }
 }

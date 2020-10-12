@@ -1,6 +1,7 @@
 package sud.models;
 
 import lombok.Getter;
+import lombok.val;
 import sud.models.elements.Element;
 import sud.models.items.Item;
 import sud.screen.Interface;
@@ -18,8 +19,6 @@ public class Player extends Targetable {
     @Getter
     private float manaUsage = 1;
     ArrayList<Item> inventory = new ArrayList<>();
-    @Getter
-    // TODO REMOVE RANDOM ELEMENT
     private static Player instance;
 
     public static Player getInstance() {
@@ -29,8 +28,7 @@ public class Player extends Targetable {
         return instance;
     }
 
-    private Player(){
-        element =  Element.randomElement();
+    private Player() {
     }
 
     public void addItem(Item item) {
@@ -51,5 +49,42 @@ public class Player extends Targetable {
     public void addMaxLife(int power) {
         Interface.printText("Agora você tem uma vida maxima maior");
         this.maxLife = maxLife + power;
+    }
+
+    public boolean openInventory() {
+        if (inventory.size() == 0) {
+            Interface.printText("Você não possui itens");
+
+            return false;
+        }
+        Interface.printText("Que item deseja usar?");
+        for (int i = 0; i < inventory.size(); i++) {
+            val item = inventory.get(i);
+            Interface.printText("%s - %s (%s%S)", i, item.getName(), item.getType().getAbreviation(), item.getPower());
+        }
+        Interface.printText("%s - Voltar", inventory.size());
+
+        do {
+            val selectedItemIndex = Interface.readIntInput();
+            if (selectedItemIndex == inventory.size())
+                return false;
+            try {
+                val item = inventory.get(selectedItemIndex);
+                switch (item.getType()) {
+                    case LIFE_POTION:
+                        actualLife = Math.min(actualLife + item.getPower(), maxLife);
+                    case MANA_POTION:
+                        actualMana = Math.min(actualMana + item.getPower(), maxLife);
+                }
+                Interface.printText("Você utilizou o item %s", item.getName());
+                return true;
+            } catch (Exception e) {
+                Interface.printText("Por favor, selecione um valor entre 0 e %s", (inventory.size() - 1));
+            }
+        } while (true);
+    }
+
+    public void setElement(Element element) {
+        this.element = element;
     }
 }

@@ -8,9 +8,9 @@ import sud.screen.Interface;
 
 public abstract class Targetable {
     @Getter
-    private int actualLife = 100;
+    protected int actualLife = 100;
     @Getter
-    private int actualMana = 100;
+    protected int actualMana = 100;
     @Getter
     protected Element element;
 
@@ -19,11 +19,11 @@ public abstract class Targetable {
         if (attackerElement != null) {
             if (element.hasWeaknessTo(attackerElement)) {
                 Interface.printText("O ataque foi super efetivo");
-                damagePercentage = 1.5;
+                damagePercentage = 1.25;
             }
             if (element.isStrongAgainst(attackerElement)) {
                 Interface.printText("O ataque foi pouco efetivo");
-                damagePercentage = 0.5;
+                damagePercentage = 0.75;
             }
         }
         val takenDamage = (int) Math.ceil(baseDamage * damagePercentage);

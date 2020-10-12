@@ -50,7 +50,7 @@ public class Interface {
         for (val text : texts) {
             printText(text);
             try {
-                Thread.sleep(2000);
+                Thread.sleep(5);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
