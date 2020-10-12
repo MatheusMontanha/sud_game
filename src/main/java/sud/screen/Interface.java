@@ -42,7 +42,7 @@ public class Interface {
     }
 
 
-    private void printText(String text, Object... varargs) {
+    public static void printText(String text, Object... varargs) {
         Interface.printText(String.format(text, varargs));
     }
 
