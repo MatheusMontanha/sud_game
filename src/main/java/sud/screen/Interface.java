@@ -20,10 +20,6 @@ public class Interface {
         getInstance().print(text);
     }
 
-    public static String readInput() {
-        return getInstance().read();
-    }
-
     public static int readIntInput(){
         return getInstance().readInt();
     }
@@ -50,7 +46,7 @@ public class Interface {
         for (val text : texts) {
             printText(text);
             try {
-                Thread.sleep(5);
+                Thread.sleep(2000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -59,11 +55,6 @@ public class Interface {
 
     private void print(String text) {
         System.out.println(text);
-    }
-
-    private String read() {
-        val scanner = new Scanner(System.in);
-        return scanner.next() + " " + scanner.nextLine();
     }
 
 }
