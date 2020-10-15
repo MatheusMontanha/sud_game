@@ -17,8 +17,8 @@
         </dependency>
     </dependencies>
     <groupId>org.matheus.mathias</groupId>
-    <artifactId>SUD</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <artifactId>SUDG</artifactId>
+    <version>0.1-alfa</version>
     <build>
         <plugins>
             <plugin>

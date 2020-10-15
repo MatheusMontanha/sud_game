@@ -31,7 +31,7 @@ public class Interface {
                 val scanner = new Scanner(System.in);
                 num = scanner.nextInt();
             } catch (Exception ex) {
-                System.out.println("Por favor, digite um numero");
+               Interface.printText("Por favor, digite um numero");
             }
         } while (num == null);
         return num;
